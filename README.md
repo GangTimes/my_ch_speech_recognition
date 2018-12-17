@@ -5,6 +5,11 @@
 ### 基于python的中文语音识别系统.
 包含声学模型和语言模型两个部分组成，两个模型都是基于神经网络。
 
+新增语音识别入门tutorial，有详细实现步骤：https://github.com/audier/my_ch_speech_recognition/tree/master/tutorial
+
+包括：声学模型：cnn+ctc; 语言模型：cbhg, self-attention;
+     
+
 - 声学模型 - `acoustic_model`文件夹下，**建议直接运行**`cnn_with_full.py`
    - 该项目实现了GRU-CTC中文语音识别声音模型，所有代码都在`gru_ctc_am.py`中，包括：
    - 增加了基于科大讯飞DFCNN的CNN-CTC结构的中文语音识别模型`cnn_ctc_am.py`，与GRU相比，对网络结构进行了稍加改造。
@@ -13,8 +18,7 @@
    
 - 语言模型 - `language_model`文件夹下
    - 新增基于CBHG结构的语言模型`language_model\CBHG_lm.py`，该模型之前用于谷歌声音合成，移植到该项目中作为基于神经网络的语言模型。
-  
-   参考了一个大佬的输入法的项目:[https://github.com/crownpku/Somiao-Pinyin](https://github.com/crownpku/Somiao-Pinyin)
+   - 新增基于self-attention结构的语言模型，https://github.com/audier/my_ch_speech_recognition/tree/master/tutorial
 
 - 数据集
    - 增加stc、primewords、Aishell、thchs30四个数据集，整理为相同格式，放于`acoustic_model\data`中,调用四个数据集的脚本在`acoustic_model\extra_utils`中，将四个数据集下载后放到data目录下直接运行`acoustic_model\cnn_with_full.py`就可以使用所有数据进行训练了。
